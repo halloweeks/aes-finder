@@ -24,9 +24,20 @@ find keys by memory dump file
 
 Now you can see what kind of AES keys are used in your favorite application!
 
+### Dump file
+
+```
+C:\>aes-finder.exe -f dump-3488.bin
+Searching keys in the dump file...
+[0x1650c0] Found AES-256 encryption key: 0x27DFBADBB537388ACDE27A7C5F3EBC3721AF0AE0A7602D2D7F8A16548F37D394
+[0x165280] Found AES-256 decryption key: 0x27DFBADBB537388ACDE27A7C5F3EBC3721AF0AE0A7602D2D7F8A16548F37D394
+Processed 15.62 MB, speed = 1.03 MB/s
+Done!
+```
+
 ### Putty
 
-    C:\>aes-finder.exe putty.exe
+    C:\>aes-finder.exe -n putty.exe
     Searching PID 2180 ...
     [0016C904] Found AES-256 encryption key: 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
     [0016C9F4] Found AES-256 decryption key: 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
@@ -38,7 +49,7 @@ Now you can see what kind of AES keys are used in your favorite application!
 
 ### Dropbox
 
-    C:\>aes-finder.exe dropbox.exe
+    C:\>aes-finder.exe -n dropbox.exe
     Searching PID 2204 ...
     [00F5DDE8] Found AES-128 encryption key: e73c856f10e56d8ded0510e964e71b33
     ... many identical keys
@@ -74,7 +85,7 @@ Now you can see what kind of AES keys are used in your favorite application!
     
 ### Chrome
 
-    C:\>aes-finder.exe chrome.exe
+    C:\>aes-finder.exe -n chrome.exe
     Searching PID 1792 ...
     [08D8302C] Found AES-256 decryption key: c73159441a23df68b292a666a082418048a844813dfe8636126e875204813291
     [08D8326C] Found AES-256 encryption key: a85f43b1515c848bcb99a94f8b3ff815bcab2ff37b67954d21231c9744651f80
@@ -104,7 +115,7 @@ Now you can see what kind of AES keys are used in your favorite application!
 
     C:\>start python -c "from Crypto.Cipher import AES; a=AES.new('\x42'*24, AES.MODE_ECB); input()"
     
-    C:\>aes-finder.exe python.exe
+    C:\>aes-finder.exe -n python.exe
     Searching PID 264 ...
     [00B84074] Found AES-192 encryption key: 424242424242424242424242424242424242424242424242
     [00B84164] Found AES-192 decryption key: 424242424242424242424242424242424242424242424242
@@ -112,7 +123,7 @@ Now you can see what kind of AES keys are used in your favorite application!
 
 ### sshd on Linux
 
-    $ sudo ./aes-finder sshd
+    $ sudo ./aes-finder -n sshd
     Searching PID 3307 ...
     Searching PID 10428 ...
     Searching PID 10430 ...
@@ -122,7 +133,7 @@ Now you can see what kind of AES keys are used in your favorite application!
 
 ### iTunes on Mac OS X
 
-    $ sudo ./aes-finder iTunes
+    $ sudo ./aes-finder -n iTunes
     Searching PID 40912 ...
     [0x7fe073e7dd3c] Found AES-128 encryption key: 743554fb48b78d29ad73fbd231373982
     [0x7fe073e7de00] Found AES-128 encryption key: 743554fb48b78d29ad73fbd231373982
