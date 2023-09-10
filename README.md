@@ -22,10 +22,6 @@ find keys by memory dump file
 ./aes-finder.exe -f dump-3257.bin
 ```
 
-you can also check out memory dump tool: <a href="https://github.com/halloweeks/memory-dump">Memory Dump Tool</a>
-
-
-
 Now you can see what kind of AES keys are used in your favorite application!
 
 ### Putty
